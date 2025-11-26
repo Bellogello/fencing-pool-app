@@ -353,7 +353,7 @@ if (tableElement && podiumDiv) {
         newPoolBtn.addEventListener('click', () => {
             if(confirm("Start a new pool?")) {
                 localStorage.clear();
-                window.location.href = 'Creating_pool.html';
+                window.location.href = 'index.html';
             }
         });
     }
