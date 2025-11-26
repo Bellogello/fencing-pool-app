@@ -1,0 +1,189 @@
+/* --- Main Page Style --- */
+body {
+    position: relative;
+    width: 1080px;
+    height: 2340px;
+    background: #0E273C;
+    margin: 0;
+    font-family: 'McLaren', sans-serif; /* Default font */
+}
+
+/* ... (h1#pool_name_display, #return, #confirm-button sections are unchanged) ... */
+h1#pool_name_display {
+    position: absolute;
+    width: 1080px;
+    height: 190px;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+    background: #A167A5;
+    font-family: 'McLaren';
+    font-weight: 400;
+    font-size: 64px;
+    color: #4A306D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#return {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    left: 54px;
+    top: 2116px;
+    background: #A167A5;
+    border-radius: 40px;
+    border: none;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 65px;
+    color: #4A306D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#confirm-button {
+    position: absolute;
+    width: 111px;
+    height: 116px;
+    left: 919px;
+    top: 2136px;
+    background: #A167A5;
+    border-radius: 40px;
+    border: none;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 65px;
+    color: #0F6013; /* Green check */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+/* --- Container for the dynamic list --- */
+#name-list {
+    position: absolute;
+    top: 220px; /* Below header */
+    bottom: 250px; /* Above footer buttons */
+    left: 48px;
+    width: 982px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between rows */
+}
+
+/* --- A Single Row (Pic + Name + 'X') --- */
+.name-entry {
+    /* REMOVED position: relative */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px; /* Reduced gap to make space */
+    width: 100%;
+    height: 203px;
+}
+
+/* --- Picture Input (Gray Box) --- */
+.name-entry input[type="file"] {
+    width: 203px;
+    height: 203px;
+    background: #D9D9D9;
+    border-radius: 30px;
+    border: none;
+    flex-shrink: 0; /* Prevents it from shrinking */
+}
+
+/* --- Name Input (Text Box) --- */
+.name-entry input[type="text"] {
+    /* CHANGED width: 730px to flex-grow: 1 */
+    flex-grow:1 ; /* This makes it fill the available space */
+    height: 203px;
+    width :70px;
+    
+    border-radius: 40px;
+    border: none;
+    padding: 0 40px; 
+    box-sizing: border-box; 
+
+    font-family: 'McLaren';
+    font-weight: 400;
+    font-size: 64px;
+    text-align: center;
+}
+
+.name-entry input.style-a {
+    background: #4A306D;
+    color: #A167A5;
+}
+.name-entry input.style-a::placeholder{
+    color:#A167A5;
+}
+.name-entry input.style-b {
+    background: #A167A5;
+    color: #4A306D;
+}
+.name-entry input.style-b::placeholder{
+    color:#4A306D;
+}
+/* --- Remove 'X' Button --- */
+.remove-button {
+    /* UPDATED: This now styles the emoji button */
+    background: transparent;
+    border: none;
+    font-size: 50px; /* Make the emoji bigger */
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px; /* Add some space */
+    flex-shrink: 0; /* Prevents it from shrinking */
+}
+/* --- NEW: Style for the disabled button --- */
+#confirm-button:disabled {
+    opacity: 0.3; /* Make it faded */
+    cursor: not-allowed; /* Show "no" cursor */
+}
+
+/* --- MODIFIED: Added transition --- */
+#confirm-button {
+    /* ... (other styles were already here) ... */
+    transition: opacity 0.2s; /* Add transition */
+}
+
+/* --- NEW: Picture Uploader Styles --- */
+.pic-uploader {
+    width: 203px;
+    height: 203px;
+    background: #D9D9D9;
+    border-radius: 30px;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative; /* For the + sign */
+    overflow: hidden; /* To hide parts of the image */
+}
+
+/* Hide the actual file input */
+.pic-uploader input[type="file"] {
+    display: none;
+}
+
+/* This is the <img> tag that shows the preview */
+img.player-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This scales the image nicely */
+}
+
+/* Placeholder style for an empty pic box */
+.pic-uploader:has(img[src=""]) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    color: #888;
+}
+.pic-uploader:has(img[src=""])::before {
+    content: '+';
+}

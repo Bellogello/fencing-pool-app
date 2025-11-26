@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="game.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=McLaren&family=Inter:wght@700&display=swap" rel="stylesheet">
+    
+    <title>Match Manager</title>
+  </head>
+  <body>
+    <h1 id="current_match">Loading...</h1>
+    
+    <div id="player1"></div>
+    <div id="player2"></div>
+    
+    <div id="player1_name">Player 1</div>
+    <div id="player2_name">Player 2</div>
+    
+    <input id="player1_score" type="number" placeholder="0" min="0" max="5">  
+    <input id="player2_score" type="number" placeholder="0" min="0" max="5">  
+    
+    <button id="next_match">Save & Next</button>
+    
+    <a href="results.html"><button id="finish-btn" style="display:none;">View Results</button></a>
+
+    <button id="open-list-btn">📅 View Schedule</button>
+
+    <div id="match-list-container">
+        <button id="close-list-btn">✖ Close</button>
+        <h3>Match Schedule</h3>
+        <div id="match-list"></div>
+    </div>
+
+    <script src="Main.js"></script>
+  </body>
+</html>

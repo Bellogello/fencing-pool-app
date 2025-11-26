@@ -1,0 +1,398 @@
+/* --- Main Setup --- */
+body {
+    position: relative;
+    width: 1080px;
+    height: 2340px;
+    background-color: #0e273c;
+    margin: 0;
+    overflow: hidden; 
+}
+
+/* --- Title Header --- */
+h1#current_match {
+    position: absolute;
+    width: 1080px;
+    height: 190px;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+    background: #A167A5;
+    font-family: 'McLaren', sans-serif;
+    font-weight: 400;
+    font-size: 64px;
+    color: #4A306D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Player Image Boxes --- */
+#player1 {
+    position: absolute;
+    width: 386px;
+    height: 386px;
+    left: 77px;
+    top: 350px; /* Moved down a bit */
+    background: #D9D9D9;
+    border-radius: 30px;
+    border: 5px solid #A167A5;
+}
+
+#player2 {
+    position: absolute;
+    width: 386px;
+    height: 386px;
+    left: 616px;
+    top: 350px;
+    background: #D9D9D9;
+    border-radius: 30px;
+    border: 5px solid #A167A5;
+}
+
+#player1 img, #player2 img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 24px;
+}
+
+/* --- Player Names --- */
+#player1_name {
+    position: absolute;
+    width: 386px;
+    height: 86px;
+    left: 77px;
+    top: 750px;
+    font-family: 'McLaren', sans-serif;
+    font-size: 50px;
+    color: #E8D7F1;
+    text-align: center;
+}
+
+#player2_name {
+    position: absolute;
+    width: 386px;
+    height: 86px;
+    left: 616px;
+    top: 750px;
+    font-family: 'McLaren', sans-serif;
+    font-size: 50px;
+    color: #E8D7F1;
+    text-align: center;
+}
+
+/* --- Score Inputs --- */
+#player1_score {
+    position: absolute;
+    width: 214px;
+    height: 214px;
+    left: 170px;
+    top: 900px;
+    background: #4A306D;
+    border-radius: 30px;
+    border: none;
+    font-family: 'McLaren', sans-serif;
+    font-size: 90px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#player2_score {
+    position: absolute;
+    width: 214px;
+    height: 214px;
+    left: 695px;
+    top: 900px;
+    background: #4A306D;
+    border-radius: 30px;
+    border: none;
+    font-family: 'McLaren', sans-serif;
+    font-size: 90px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#player1_score::placeholder, #player2_score::placeholder { color: #A167A5; }
+
+/* --- Save/Next Match Button --- */
+#next_match {
+    position: absolute;
+    width: 600px;
+    height: 180px;
+    left: 247px;
+    top: 1300px;
+    background: #0F6013; /* Green for Save */
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: 'McLaren', sans-serif;
+    font-size: 60px;
+    color: white;
+}
+
+/* --- NEW: Open Schedule Button --- */
+#open-list-btn {
+    position: absolute;
+    width: 600px;
+    height: 150px;
+    left: 247px;
+    top: 1600px; /* Below the save button */
+    background: #A167A5;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: 'McLaren', sans-serif;
+    font-size: 50px;
+    color: #4A306D;
+}
+
+/* --- NEW: POPUP CONTAINER (Hidden by Default) --- */
+#match-list-container {
+    display: none; /* HIDDEN INITIALLY */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 39, 60, 0.98); /* Dark overlay */
+    z-index: 1000;
+    padding: 100px 50px;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+/* Show it when JS adds the 'visible' class */
+#match-list-container.visible {
+    display: flex;
+}
+
+/* Close Button inside Popup */
+#close-list-btn {
+    align-self: flex-end;
+    font-size: 50px;
+    background: transparent;
+    color: #A167A5;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+#match-list-container h3 {
+    color: #A167A5;
+    font-family: 'McLaren', sans-serif;
+    font-size: 50px;
+    margin: 0 0 40px 0;
+    text-align: center;
+}
+
+#match-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* List Item Styles */
+.list-item {
+    background: #0e273c;
+    border-radius: 30px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border: 3px solid #4A306D;
+    cursor: pointer;
+}
+
+.list-item.active {
+    border-color: #FFFFFF;
+    background: #2a4a65;
+}
+
+.list-item.played {
+    border-color: #0F6013; /* Green border */
+}
+
+.li-img {
+    width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+    border: 3px solid #A167A5;
+}
+.li-names {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    color: white;
+    align-items: center;
+}
+.li-score {
+    font-size: 46px;
+    font-weight: bold;
+    color: #A167A5;
+    background: #0e273c;
+    padding: 10px 30px;
+    border-radius: 15px;
+    min-width: 120px;
+    text-align: center;
+}
+/* --- EXISTING CSS ABOVE ... --- */
+
+/* --- NEW: FINISH BUTTON --- */
+#finish-btn {
+    position: absolute;
+    width: 600px;
+    height: 180px;
+    left: 247px;
+    top: 1300px; /* Same spot as save button */
+    background: #FFD700; /* Gold */
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-family: 'McLaren', sans-serif;
+    font-size: 50px;
+    color: #4A306D;
+    display: none; /* Hidden by default */
+    z-index: 10;
+}
+
+/* --- NEW: VERTICAL RESULTS LAYOUT --- */
+
+.results-container {
+    /* Normal Vertical Layout */
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0E273C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Scroll down to see podium */
+}
+
+.results-container h1 {
+    color: #A167A5;
+    font-family: 'McLaren', sans-serif;
+    font-size: 40px;
+    margin: 10px 0 20px 0;
+    text-align: center;
+}
+
+/* --- TABLE STYLES --- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Horizontal Scroll for Table */
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+table#pool-sheet {
+    min-width: 1000px; /* Force width so it scrolls */
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    color: black;
+}
+
+table#pool-sheet th, table#pool-sheet td {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table#pool-sheet th {
+    background-color: #4A306D;
+    color: #E8D7F1;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* First Column (Names) Sticky */
+table#pool-sheet td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #f9f9f9;
+    z-index: 6;
+    border-right: 3px solid black;
+    min-width: 180px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-pic {
+    width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+    border: 2px solid #A167A5;
+}
+
+.diagonal-cell {
+    background-color: #808080 !important;
+    background: linear-gradient(to top right, #808080 48%, black 49%, black 51%, #808080 52%);
+}
+
+/* --- PODIUM STYLES --- */
+#podium-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px; /* Tighter gap for mobile */
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.podium-place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 15px 15px 0 0;
+    padding: 10px;
+    text-align: center;
+    color: #0E273C;
+    font-family: 'Inter';
+    width: 30%; /* Flexible width */
+}
+
+.p1 { height: 260px; border-bottom: 8px solid #FFD700; z-index: 2; }
+.p2 { height: 220px; border-bottom: 8px solid #C0C0C0; }
+.p3 { height: 190px; border-bottom: 8px solid #CD7F32; }
+
+.podium-rank { font-size: 30px; font-weight: bold; color: #A167A5; }
+.p1 .podium-rank { color: #FFD700; font-size: 40px; }
+
+.podium-pic { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid #A167A5; margin-bottom: 5px; }
+.p1 .podium-pic { width: 90px; height: 90px; border-color: #FFD700; }
+
+.podium-name { font-size: 16px; font-weight: bold; font-family: 'McLaren'; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; }
+.podium-stats { font-size: 12px; color: #666; font-weight: bold; }
+
+/* --- LIST STYLES --- */
+#other-ranks-section { width: 100%; padding-bottom: 100px; }
+#other-ranks-list { display: flex; flex-direction: column; gap: 15px; }
+
+.rank-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    color: #0E273C;
+    font-family: 'Inter';
+}
+.rc-rank { font-size: 24px; font-weight: bold; color: #A167A5; width: 40px; }
+.rc-pic { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #A167A5; margin-right: 15px; }
+.rc-name { flex: 1; font-weight: bold; font-size: 20px; font-family: 'McLaren'; }
+.rc-stats { text-align: right; font-size: 14px; color: #555; font-weight: bold; }
+
+/* Button Group */
+.button-group { margin-top: 20px; display: flex; gap: 20px; justify-content: center; padding-bottom: 40px; }
+.action-btn { padding: 15px 30px; font-size: 20px; border-radius: 15px; border: none; background: #A167A5; color: #4A306D; font-family: 'McLaren'; }
+.action-btn.danger { background: #dc3545; color: white; }

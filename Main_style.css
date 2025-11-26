@@ -1,0 +1,68 @@
+body {
+    width: 1080px;
+    height: 2340px;
+    background-color: #0e273c;
+    
+    /* Add margin: 0 to remove default spacing */
+    margin: 0; 
+    
+    /* Add position: relative to act as an anchor 
+       for your absolutely positioned elements */
+    position: relative; 
+}
+
+
+#create{
+border: none;
+position: absolute;
+width: 945px;
+height: 203px;
+left: 67px;
+top: 917px;
+
+background-color: #4A306D;
+border-radius: 40px;
+
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 92px;
+/* identical to box height */
+text-align: center;
+
+color: #A167A5;
+}
+#create:active {
+  background-color: #A167A5;
+  color: #4A306D;
+}
+
+#continue{
+border: none;
+position: absolute;
+width: 945px;
+height: 203px;
+left: 68px;
+top: 1220px;
+
+
+
+
+background-color: #A167A5;
+border-radius: 40px;
+
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 92px;
+/* identical to box height */
+text-align: center;
+
+color: #4A306D;
+}
+#create:active {
+  background-color: #4A306D;
+  color: #A167A5;
+}
+
+

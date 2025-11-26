@@ -1,0 +1,84 @@
+body {
+width: 1080px;
+height: 2340px;
+background-color: #0e273c;
+}
+
+#return{
+
+/* Rectangle 7 */
+border: none;
+
+
+background: #A167A5;
+border-radius: 40px;
+/* ← */
+
+position: relative;
+width: 116px;
+height: 116px;
+left: 54px;
+top: 2116px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 65px;
+line-height: 10px;
+/* identical to box height */
+
+color: #4A306D;
+
+}
+#names_page{
+/* Rectangle 7 */
+border: none;
+
+
+background: #A167A5;
+border-radius: 40px;
+/* ← */
+
+position: absolute;
+width: 116px;
+height: 116px;
+left: 919px;
+top: 2116px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 65px;
+line-height: 10px;
+/* identical to box height */
+
+color: #4A306D;
+
+}
+#pool_name_input{
+
+border: none;
+position: absolute;
+width: 945px;
+height: 203px;
+left: 67px;
+top: 917px;
+
+background-color: #4A306D;
+border-radius: 40px;
+
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 92px;
+/* identical to box height */
+text-align: center;
+
+color: #A167A5;
+caret-color: transparent;
+
+
+}
+#pool_name::placeholder{
+    color: #A167A5;
+}
