@@ -1,7 +1,8 @@
 {
   "name": "Fencing Pool Manager",
   "short_name": "PoolMgr",
-  "start_url": "Creating_pool.html",
+  "description": "A simple tool to manage fencing pools, score matches, and calculate rankings automatically.",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0E273C",
   "theme_color": "#A167A5",
