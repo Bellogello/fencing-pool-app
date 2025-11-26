@@ -1,14 +1,14 @@
 const CACHE_NAME = "pool-app-v1";
 const ASSETS = [
   "./",
-  "./Creating_pool.html",
+  "./index.html",      // Was Creating_pool.html
   "./names.html",
   "./game.html",
   "./results.html",
-  "./creating_pool.css",
+  "./creating_pool.css", // Make sure this matches your actual css file name!
   "./names.css",
   "./game.css",
-  "./Main.js",
+  "./main.js",         // Was Main.js
   "./icon.png"
 ];
 
