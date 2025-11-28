@@ -1,3 +1,28 @@
+/* =========================================
+   AUTO-ZOOM FIX (Paste at the top of main.js)
+   ========================================= */
+(function() {
+    // 1. Calculate how much we need to shrink the 1080px design
+    // We use screen.width to get the real phone width
+    var phoneWidth = window.screen.width;
+    var targetWidth = 1080;
+    var scale = phoneWidth / targetWidth;
+
+    // 2. Find the viewport tag and force it to that scale
+    var meta = document.querySelector("meta[name=viewport]");
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = "viewport";
+        document.head.appendChild(meta);
+    }
+    
+    // This tells the browser: "The page is 1080px wide, please zoom out to X%"
+    meta.setAttribute("content", "width=1080, initial-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no");
+})();
+
+/* =========================================
+   BELOW IS YOUR EXISTING CODE...
+   ========================================= */
 /* ==================================================================
    SHARED CONFIGURATION
    ================================================================== */
